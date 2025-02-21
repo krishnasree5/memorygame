@@ -53,7 +53,7 @@ const Game = () => {
       const newScore = score + 1;
       if (newScore > bestScore) {
         setBestScore(newScore);
-        if (newScore === 15) {
+        if (newScore === 2) {
           setGameOver(true);
         }
       }
@@ -76,7 +76,7 @@ const Game = () => {
       {gameOver && (
         <div className="game-over-container">
           <h1>Game Over!</h1>
-          <p>Your final score is {score}.</p>
+          <button onClick={() => window.location.reload()}>Play Again</button>
         </div>
       )}
       {!gameOver && (

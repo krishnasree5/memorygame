@@ -180,8 +180,11 @@
   .game-over-container h1 {
     font-size: 2rem;
   }
+}
 
-  .game-over-container p {
-    font-size: 1rem;
-  }
+.game-over-container button {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  background: #ffd700;
 }
