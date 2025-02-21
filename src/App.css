@@ -1,0 +1,187 @@
+.app-container {
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.15) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.1) 4px,
+      transparent 4px
+    );
+  background-size: 30px 30px, 60px 60px;
+  animation: starfield 120s linear infinite;
+  z-index: 0;
+}
+
+.scores-container {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.score {
+  font-size: 1.4rem;
+  margin: 0.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Press Start 2P", cursive;
+  color: #ffd700;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.score:hover {
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.score::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  transition: width 0.3s ease;
+}
+
+.score:hover::after {
+  width: 80%;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  position: relative;
+  perspective: 1000px;
+}
+
+@keyframes starfield {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(100px) rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .score {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+.loading {
+  font-family: "Press Start 2P", cursive;
+  color: #ffd700;
+  font-size: 1.5rem;
+  padding: 2rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.game-over-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+  color: white;
+  z-index: 100;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.game-over-container h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-over-container h1 {
+    font-size: 2rem;
+  }
+
+  .game-over-container p {
+    font-size: 1rem;
+  }
+}
