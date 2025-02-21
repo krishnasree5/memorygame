@@ -53,7 +53,7 @@ const Game = () => {
       const newScore = score + 1;
       if (newScore > bestScore) {
         setBestScore(newScore);
-        if (newScore === 2) {
+        if (newScore === 15) {
           setGameOver(true);
         }
       }
