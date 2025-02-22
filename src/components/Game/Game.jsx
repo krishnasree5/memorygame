@@ -75,7 +75,7 @@ const Game = () => {
     <>
       {gameOver && (
         <div className="game-over-container">
-          <h1>Game Over!</h1>
+          <h1>You Win!</h1>
           <button onClick={() => window.location.reload()}>Play Again</button>
         </div>
       )}
