@@ -1,0 +1,245 @@
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading {
+  font-size: 2rem;
+  font-family: "Press Start 2P", cursive;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.game-over-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+  gap: 2rem;
+  z-index: 100;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.game-over-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.15) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.1) 4px,
+      transparent 4px
+    );
+  background-size: 30px 30px, 60px 60px;
+  animation: starfield 120s linear infinite;
+  z-index: -1;
+}
+
+.game-over-container h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.game-over-container button {
+  font-family: "Press Start 2P", cursive;
+  background: rgba(72, 52, 212, 0.8);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  border: 3px solid #ffd700;
+  color: #ffd700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.game-over-container button:hover {
+  background: rgba(104, 109, 224, 0.9);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes starfield {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .game-over-container h1 {
+    font-size: 2rem;
+  }
+}
+
+.container {
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.15) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.1) 4px,
+      transparent 4px
+    );
+  background-size: 30px 30px, 60px 60px;
+  animation: starfield 120s linear infinite;
+  z-index: 0;
+}
+
+.button {
+  font-family: "Press Start 2P", cursive;
+  background: rgba(72, 52, 212, 0.8);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 3px solid #ffd700;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #ffd700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: rgba(104, 109, 224, 0.9);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.scores-container {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.score {
+  font-size: 1.4rem;
+  margin: 0.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Press Start 2P", cursive;
+  color: #ffd700;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.score:hover {
+  transform: scale(1.05);
+}
+
+.score::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  transition: width 0.3s ease;
+}
+
+.score:hover::after {
+  width: 80%;
+}

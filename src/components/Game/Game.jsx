@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
+import styles from "./Game.module.css";
 
 const Game = () => {
   const [numberOfCards, setNumberOfCards] = useState(0);
@@ -66,8 +67,8 @@ const Game = () => {
 
   if (loading) {
     return (
-      <div className="app-container">
-        <div className="loading">Loading Pokémon...</div>
+      <div className={styles.container}>
+        <div className={styles.loading}>Loading Pokémon...</div>
       </div>
     );
   }
@@ -75,32 +76,38 @@ const Game = () => {
   return (
     <>
       {numberOfCards === 0 && (
-        <div className="app-container">
-          <button onClick={() => setNumberOfCards(5)} className="button">
+        <div className={styles.container}>
+          <button onClick={() => setNumberOfCards(5)} className={styles.button}>
             Easy
           </button>
-          <button onClick={() => setNumberOfCards(15)} className="button">
+          <button
+            onClick={() => setNumberOfCards(15)}
+            className={styles.button}
+          >
             Medium
           </button>
-          <button onClick={() => setNumberOfCards(25)} className="button">
+          <button
+            onClick={() => setNumberOfCards(25)}
+            className={styles.button}
+          >
             Hard
           </button>
         </div>
       )}
 
       {gameOver && (
-        <div className="game-over-container">
+        <div className={styles["game-over-container"]}>
           <h1>You Win!</h1>
           <button onClick={() => window.location.reload()}>Play Again</button>
         </div>
       )}
       {!gameOver && (
-        <div className="app-container">
-          <div className="scores-container">
-            <p className="score">Score: {score}</p>
-            <p className="score">Best Score: {bestScore}</p>
+        <div className={styles.container}>
+          <div className={styles["scores-container"]}>
+            <p className={styles.score}>Score: {score}</p>
+            <p className={styles.score}>Best Score: {bestScore}</p>
           </div>
-          <div className="cards-grid">
+          <div className={styles["cards-grid"]}>
             {shuffledCards.map((d) => (
               <Card
                 key={d.id}
