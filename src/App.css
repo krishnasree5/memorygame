@@ -30,6 +30,31 @@
   z-index: 0;
 }
 
+.button {
+  font-family: "Press Start 2P", cursive;
+  background: rgba(72, 52, 212, 0.8);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 3px solid #ffd700;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #ffd700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: rgba(104, 109, 224, 0.9);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
 .scores-container {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 20px;
@@ -184,7 +209,22 @@
 
 .game-over-container button {
   font-family: "Press Start 2P", cursive;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 1rem 2rem;
-  background: #ffd700;
+  background: rgba(72, 52, 212, 0.8);
+  color: #ffd700;
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.game-over-container button:hover {
+  background: rgba(104, 109, 224, 0.9);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }

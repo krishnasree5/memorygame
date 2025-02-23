@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Card from "../Card/Card";
 
 const Game = () => {
+  const [numberOfCards, setNumberOfCards] = useState(0);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [shuffledCards, setShuffledCards] = useState([]);
@@ -17,7 +18,7 @@ const Game = () => {
       cards[i] = cards[randomIndex];
       cards[randomIndex] = temp;
     }
-    return cards.slice(0, 15);
+    return cards.slice(0, numberOfCards);
   };
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Game = () => {
     };
 
     fetchPokemon();
-  }, []);
+  }, [numberOfCards]);
 
   const handleCardClick = (id) => {
     if (clickedCards.has(id)) {
@@ -53,7 +54,7 @@ const Game = () => {
       const newScore = score + 1;
       if (newScore > bestScore) {
         setBestScore(newScore);
-        if (newScore === 15) {
+        if (newScore === numberOfCards) {
           setGameOver(true);
         }
       }
@@ -73,6 +74,20 @@ const Game = () => {
 
   return (
     <>
+      {numberOfCards === 0 && (
+        <div className="app-container">
+          <button onClick={() => setNumberOfCards(5)} className="button">
+            Easy
+          </button>
+          <button onClick={() => setNumberOfCards(15)} className="button">
+            Medium
+          </button>
+          <button onClick={() => setNumberOfCards(25)} className="button">
+            Hard
+          </button>
+        </div>
+      )}
+
       {gameOver && (
         <div className="game-over-container">
           <h1>You Win!</h1>
